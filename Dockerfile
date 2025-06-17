@@ -6,8 +6,8 @@ ARG USER_ID=1000
 ARG GROUP_ID=1000
 ENV DEBIAN_FRONTEND=noninteractive
 
-ARG TOOLCHAIN_VERSION=13.2.rel1
-ARG TOOLCHAIN_URL=https://developer.arm.com/-/media/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-eabi.tar.xz
+ARG TOOLCHAIN_VERSION=14.2.rel1
+ARG TOOLCHAIN_URL=https://developer.arm.com/-/media/Files/downloads/gnu/14.2.rel1/binrel/arm-gnu-toolchain-14.2.rel1-x86_64-arm-none-eabi.tar.xz
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \

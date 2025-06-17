@@ -1,10 +1,26 @@
-# STM32F401VGT6 STM32CubeMX + Meson + Ninja
+# STM32F407VGT6 STM32CubeMX + Meson + Ninja
 
+```bash
 cp .env.dist .env
-
-./rebuild.docker.sh
-
+```
+```bash
+docker-compose build
+```
+```bash
+docker-compose run --rm dev meson setup builddir --cross-file cross_file.txt
+```
+```bash
+docker-compose run --rm dev meson compile -C builddir
+```
+```bash
+docker-compose run --rm dev ninja -C builddir flash
+```
+```bash
+./rebuild.sh
+```
+```bash
 ./flash.sh
+```
 
 ## Disclaimer: For Educational Purposes Only
 

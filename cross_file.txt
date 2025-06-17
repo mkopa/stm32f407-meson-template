@@ -1,10 +1,10 @@
 [binaries]
-c       = 'arm-none-eabi-gcc'
-cpp     = 'arm-none-eabi-g++'
-ar      = 'arm-none-eabi-ar'
-strip   = 'arm-none-eabi-strip'
-objcopy = 'arm-none-eabi-objcopy'
-size    = 'arm-none-eabi-size'
+c       = '/opt/toolchain/bin/arm-none-eabi-gcc'
+cpp     = '/opt/toolchain/bin/arm-none-eabi-g++'
+ar      = '/opt/toolchain/bin/arm-none-eabi-ar'
+strip   = '/opt/toolchain/bin/arm-none-eabi-strip'
+objcopy = '/opt/toolchain/bin/arm-none-eabi-objcopy'
+size    = '/opt/toolchain/bin/arm-none-eabi-size'
 
 [host_machine]
 system      = 'none'
@@ -13,27 +13,16 @@ cpu         = 'cortex-m4'
 endian      = 'little'
 
 [built-in options]
-# Flagi dla kompilatora C. Obejmują flagi architektury i optymalizacje.
-# Definicje preprocesora (-D) są zarządzane w meson.build
-c_args = ['$(CPU)',
-                '-mthumb',
-                '$(FPU)',
-                '$(FLOAT_ABI)',
-                '-Og',
-                '-g',
-                '-gdwarf-2']
+common_flags = ['-mcpu=cortex-m4', '-mthumb', '-mfpu=fpv4-sp-d16', '-mfloat-abi=hard',
+                '-Og', '-Wall', '-fdata-sections', '-ffunction-sections', '-g', '-gdwarf-2']
 
-# Przykładowe flagi dla kompilatora C++. Dostosuj w razie potrzeby.
-cpp_args = c_args + ['-fno-exceptions', '-fno-rtti']
+# Flagi dla kompilatora C
+c_args = common_flags
 
-# Flagi dla linkera. Skrypt linkera jest podawany osobno w meson.build.
-c_link_args = ['$(CPU)',
-                 '-mthumb',
-                 '$(FPU)',
-                 '$(FLOAT_ABI)',
-                 '-specs=nano.specs',
-                 '-Wl,--gc-sections',
-                 '-lc',
-                 '-lm',
-                 '-lnosys']
-cpp_link_args = c_link_args
+# Flagi dla kompilatora C++
+cpp_args = common_flags + ['-fno-exceptions', '-fno-rtti']
+
+# Flagi dla linkera
+link_args = common_flags + ['--specs=nano.specs', '-Wl,--gc-sections']
+c_link_args = link_args
+cpp_link_args = link_args

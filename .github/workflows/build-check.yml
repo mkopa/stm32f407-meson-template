@@ -1,0 +1,24 @@
+name: Build Verification
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up build environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip ninja-build gcc-arm-none-eabi binutils-arm-none-eabi
+          pip3 install meson
+
+      - name: Configure Meson build
+        run: meson setup builddir --cross-file cross_file.txt
+
+      - name: Compile the project
+        run: meson compile -C builddir

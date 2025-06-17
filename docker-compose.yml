@@ -1,0 +1,19 @@
+# docker-compose.yml
+
+version: '3.8'
+
+services:
+  dev:
+    container_name: ${COMPOSE_PROJECT_NAME}_dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Przekazanie UID i GID jako oddzielnych argumentów
+      args:
+        USER_ID: ${USER_ID}
+        GROUP_ID: ${GROUP_ID}
+    volumes:
+      - .:/app
+    working_dir: /app
+    tty: true
+    stdin_open: true

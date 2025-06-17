@@ -1,6 +1,9 @@
 # STM32F401VGT6 STM32CubeMX + Meson + Ninja
 
-./build.sh
+cp .env.dist .env
+
+./rebuild.docker.sh
+
 ./flash.sh
 
 ## Disclaimer: For Educational Purposes Only

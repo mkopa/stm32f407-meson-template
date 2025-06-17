@@ -1,10 +1,10 @@
 [binaries]
-c       = 'arm-none-eabi-gcc'
-cpp     = 'arm-none-eabi-g++'
-ar      = 'arm-none-eabi-ar'
-strip   = 'arm-none-eabi-strip'
-objcopy = 'arm-none-eabi-objcopy'
-size    = 'arm-none-eabi-size'
+c       = '/opt/toolchain/bin/arm-none-eabi-gcc'
+cpp     = '/opt/toolchain/bin/arm-none-eabi-g++'
+ar      = '/opt/toolchain/bin/arm-none-eabi-ar'
+strip   = '/opt/toolchain/bin/arm-none-eabi-strip'
+objcopy = '/opt/toolchain/bin/arm-none-eabi-objcopy'
+size    = '/opt/toolchain/bin/arm-none-eabi-size'
 
 [host_machine]
 system      = 'none'

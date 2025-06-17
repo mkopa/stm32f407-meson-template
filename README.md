@@ -1,8 +1,8 @@
-# STM32F401VGT6 STM32CubeMX + Meson + Ninja
+# STM32F407VGT6 STM32CubeMX + Meson + Ninja
 
 cp .env.dist .env
 
-./rebuild.docker.sh
+./rebuild.sh
 
 ./flash.sh
 

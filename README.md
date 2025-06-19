@@ -7,7 +7,7 @@ cp .env.dist .env
 docker-compose build
 ```
 ```bash
-docker-compose run --rm dev meson setup builddir --cross-file cross_file.txt
+docker-compose run --rm dev meson setup builddir --cross-file cross_file.docker.txt
 ```
 ```bash
 docker-compose run --rm dev meson compile -C builddir
